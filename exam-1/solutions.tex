@@ -158,10 +158,30 @@
 
 	\emph{Ответ.} $$\int\frac{dx}{(x-1)^2(x^2+4)^2} = \frac{\frac{11}{40}x^2 - \frac{1}{8}x - \frac{3}{5}}{25(x-1)(x^2+4)} + \frac{11}{200}(\frac{1}{2}\arctg{\frac{x}{2}} + \frac{4}{5}(\frac{1}{5}\ln|x - 1| + \frac{1}{2}\ln(x^2 + 4) + \frac{1}{2}\arctg{\frac{x}{2}})) + C$$
 	% End of problem 2
-	\begin{displaymath}
-	3. \int \sqrt{(x^2+1)^3} dx
-	\end{displaymath}
-	\begin{displaymath}
-	4. \int \frac{dx}{(1+x)\sqrt{x-x^2}}
-	\end{displaymath}
+	% Problem 3
+	$$3. \int\sqrt{(x^2+1)^3}dx = \int(x^2 + 1)\sqrt{x^2 + 1}dx$$
+	$$u = \sqrt{x^2 + 1} \Rightarrow du = \frac{xdx}{\sqrt{x^2 + 1}}$$
+	$$dv = (x^2 + 1)dx \Rightarrow v = \frac{x^3}{3} + x$$
+	$$\int(x^2 + 1)\sqrt{x^2 + 1}dx = \frac{\sqrt{x^2 + 1}(x^3 + 3x)}{3} - \int\frac{x^4 + 3x^2}{3\sqrt{x^2 + 1}}dx$$
+
+	$$t = x^2 + 1 \Rightarrow dt = 2xdx$$
+	$$\int\frac{x^4 + 3x^2}{3\sqrt{x^2 + 1}}dx = \int\frac{\sqrt{t - 1}(t + 2)}{6t}dt = \frac{1}{6}\int\sqrt{t - 1}dt + \int\frac{\sqrt{t - 1}}{3t}dt$$
+	$$\int\sqrt{t - 1}dt = \frac{3\sqrt{t - 1}}{2} + C = \frac{3|x|}{2} + C$$
+
+	$$\int\frac{\sqrt{t - 1}}{3t}dt$$
+	$$u = \frac{1}{3t} \Rightarrow du = \frac{ln|t|}{3}dt$$
+	$$dv = \sqrt{t - 1}dt \Rightarrow v = \frac{3\sqrt{t - 1}}{2}$$
+
+	$$\int\frac{\sqrt{t - 1}}{3t}dt = \frac{\sqrt{t - 1}}{2t} - \frac{1}{2}\int\sqrt{t - 1}ln|t|dt$$
+	$$u = ln|t| \Rightarrow du = \frac{1}{t}dt$$
+	$$dv = \sqrt{t - 1}dt \Rightarrow v = \frac{3\sqrt{t - 1}}{2}$$
+	$$\int\sqrt{t - 1}ln|t|dt = \frac{3\sqrt{t - 1}ln|t|}{2} - \frac{9}{2}\int\frac{\sqrt{t - 1}}{3t}dt$$
+	$$\int\frac{\sqrt{t - 1}}{3t}dt = \frac{\sqrt{t - 1}}{2t} - \frac{3}{4}\sqrt{t - 1}ln|t| + \frac{9}{4}\int\frac{\sqrt{t - 1}}{3t}dt$$
+	$$-\frac{5}{4}\int\frac{\sqrt{t - 1}}{3t}dt = \frac{\sqrt{t - 1}}{2t} - \frac{3}{4}\sqrt{t - 1}ln|t|$$
+	$$\int\frac{\sqrt{t - 1}}{3t}dt = -\frac{2\sqrt{t - 1}}{5t} + 15\sqrt{t - 1}ln|t|$$
+	% t = x^2 + 1
+	$$\int\frac{\sqrt{t - 1}(t + 2)}{6t}dt = \frac{|x|}{4} + -\frac{2|x|}{5(x^2 + 1)} + 15|x|ln(x^2 + 1) + C$$
+	\emph{Ответ.} $$\int\sqrt{(x^2+1)^3}dx = \frac{\sqrt{x^2 + 1}(x^3 + 3x)}{3} - \frac{|x|}{4} + -\frac{2|x|}{5(x^2 + 1)} + 15|x|ln(x^2 + 1) + C$$
+	% End of problem 3
+	$$4. \int\frac{dx}{(1+x)\sqrt{x-x^2}}$$
 \end{document}
