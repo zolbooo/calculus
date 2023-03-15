@@ -3,7 +3,7 @@
 \usepackage[english,russian]{babel}
 
 \usepackage{amsmath,amsthm,amssymb}
-\usepackage{mathtext}
+\usepackage{mathtext,mathtools}
 
 \author{
 	Гантумур, Золбообаяр,\\
@@ -14,16 +14,154 @@
 
 \begin{document}
 	\maketitle
-	\begin{align}
-	1. \int \frac{5x-13}{(x^2-5x+6)^2} dx
-	\end{align}
-	\begin{align}
-	2. \int \frac{dx}{(x-1)^2(x^2+4)^2}
-	\end{align}
-	\begin{align}
+	% First problem
+	$$1. \int\frac{5x-13}{(x^2-5x+6)^2}dx = \int\frac{5x-13}{(x-3)^2(x-2)^2}dx =$$
+	$$= \int(\frac{A}{x-3} + \frac{B}{(x-3)^2} + \frac{C}{x-2} + \frac{D}{(x-2)^2})dx =$$
+	$$= \int\frac{A}{x-3}dx + \int\frac{B}{(x-3)^2}dx + \int\frac{C}{x-2}dx + \int\frac{D}{(x-2)^2}dx =$$
+	$$= A\int\frac{d(x - 3)}{x-3} + B\int\frac{d(x - 3)}{(x-3)^2} + C\int\frac{d(x - 2)}{x - 2} + D\int\frac{d(x - 2)}{(x-2)^2} =$$
+	$$= A\ln|x - 3| - \frac{B}{x - 3} + Cln|x - 2| - \frac{D}{x - 2} + c$$
+
+	$$\frac{(x-3)(x-2)^2A + (x-2)^2B + (x-2)(x-3)^2C + (x-3)^2D}{(x-3)^2(x-2)^2} =$$
+	\begin{flalign*}
+		& x^3: A + C = 0\\
+		& x^2: -5A + B - 5C + D = 0\\
+		& x: 10A - 2B + 15C - 3D = 5\\
+		& 1: -12A + 4B - 18C + 9D = 13
+	\end{flalign*}
+
+	\begin{equation*}
+		\begin{cases}
+			A + C = 0\\
+			-5A + B - 5C + D = 0 \Rightarrow B + D = 0\\
+			10A - 2B + 15C - 3D = 5 \Rightarrow -2B + 5C - 3D = 5\\
+			-12A + 4B - 18C + 9D = 13 \Rightarrow 4B - 6C + 9D = 13
+		\end{cases}
+	\end{equation*}
+	\begin{equation*}
+		\begin{cases}
+			A + C = 0\\
+			B + D = 0\\
+			-2B + 5C - 3D = 5 \Rightarrow 5C - D = 5\\
+			4B - 6C + 9D = 13 \Rightarrow -6C + 5D = 13
+		\end{cases}
+	\end{equation*}
+	\begin{equation*}
+		\begin{cases}
+			A + C = 0\\
+			B + D = 0\\
+			5C - D = 5 \Rightarrow 30C - 6D = 30\\
+			-6C + 5D = 13 \Rightarrow -30C + 25D = 65 \Rightarrow 19D = 95
+		\end{cases}
+	\end{equation*}
+	$$D = 5 \Rightarrow B = -5$$
+	$$C = 2 \Rightarrow A = -2$$
+
+	\emph{Ответ.} $$\int\frac{5x-13}{(x^2-5x+6)^2}dx = -2\ln|x - 3| + \frac{5}{x - 3} + 2ln|x - 2| - \frac{5}{x - 2} + C$$
+	% End of first problem
+	% Problem 2
+	$$2. \int \frac{dx}{(x-1)^2(x^2+4)^2}$$
+	Решение методом Остроградского.
+	$$Q(x) = (x-1)^2(x^2+4)^2 \Rightarrow (Q(x))' = 2(x-1)(x^2+4)^2 + 4x(x^2+4)(x-1)$$
+	$$(Q(x))' = 2(x-1)(x^2+4)(x^2+2x+4)$$
+	$$Q_1(x) = Q_2(x) = (x-1)(x^2+4)$$
+
+	$$\int\frac{dx}{(x-1)^2(x^2+4)^2} = \frac{Ax^2 + Bx + C}{(x-1)(x^2+4)} + \int\frac{Dx^2 + Ex + F}{(x-1)(x^2+4)}dx$$
+
+	$$\frac{(2Ax + B)(x^3 - x^2 + 4x - 4)}{(x-1)^2(x^2+4)^2} +$$
+	$$+ \frac{(3x^2 - 2x + 4)(Ax^2+Bx+C)}{(x-1)^2(x^2+4)^2} +$$
+	$$+ \frac{(x - 1)(x^2+4)(Dx^2 + Ex + F)}{(x-1)^2(x^2+4)^2} = \frac{1}{(x-1)^2(x^2+4)^2}$$
+
+	$$x^5: D = 0$$
+	$$x^4: 2A + 3A + E - D = 5A + E = 0$$
+	$$x^3: -2A + B + 3B - 2A + F - E + 4D = -4A + 4B - E + F = 0$$
+	$$x^2: 8A - B + 4A - 2B + 3C - F + 4E - 4D = 12A -3B + 3C + 4E - F = 0$$
+	$$x: -8A + 4B + 4B - 2C - 4F - 4E = -4A + 4B - C - 2E - 2F = 0$$
+	$$1: 4B + 4C - 4F = 1$$
+	\begin{equation*}
+		\begin{cases}
+			5A + E = 0 \Rightarrow E = -5A\\
+			-4A + 4B - E + F = 0 \Rightarrow A + 4B + F = 0\\
+			12A - 3B + 3C + 4E - F = 0 \Rightarrow -8A - 3B + 3C - F = 0\\
+			-4A + 4B - C - 2E + 2F = 0 \Rightarrow 6A + 4B - C + 2F = 0\\
+			4B + 4C - 4F = 1
+		\end{cases}
+	\end{equation*}
+	\begin{equation*}
+		\begin{cases}
+			A + 4B + F = 0 \\
+			-8A - 3B + 3C - F = 0 \Rightarrow 29B + 3C + 7F = 0\\
+			6A + 4B - C + 2F = 0 \Rightarrow -20B - C - 4F = 0\\
+			4B + 4C - 4F = 1
+		\end{cases}
+	\end{equation*}
+	\begin{equation*}
+		\begin{cases}
+			-20B - C - 4F = 0\\
+			29B + 3C + 7F = 0 \Rightarrow -31B + 5F = 0\\
+			4B + 4C - 4F = 1 \Rightarrow -76B - 20F = 1
+		\end{cases}
+	\end{equation*}
+	\begin{equation*}
+		\begin{cases}
+			-31B + 5F = -124B + 20F = 0\\
+			-76B - 20F = 1 \Rightarrow -200B = 1
+		\end{cases}
+	\end{equation*}
+	\begin{equation*}
+		\begin{cases}
+			B = -\frac{1}{200}\\
+			-31B + 5F = 0 \Rightarrow 5F = \frac{31}{200} \Rightarrow F = \frac{31}{1000}\\
+			-20B - C - 4F = 0 \Rightarrow C = -20B - 4F \Rightarrow C = \frac{1}{10} - \frac{31}{250} = -\frac{3}{125}\\
+			A + 4B + F = 0 \Rightarrow A = -4B - F = \frac{1}{50} - \frac{31}{1000} = -\frac{11}{1000}\\
+			E = -5A \Rightarrow E = \frac{11}{200}
+		\end{cases}
+	\end{equation*}
+	\begin{equation*}
+		\begin{cases}
+			A = -\frac{11}{1000}\\
+			B = -\frac{1}{200}\\
+			C = -\frac{3}{125}\\
+			D = 0\\
+			E = \frac{11}{200}\\
+			F = -\frac{11}{1000}
+		\end{cases}
+	\end{equation*}
+
+	$$\int\frac{Dx^2 + Ex + F}{(x-1)(x^2+4)}dx = \int\frac{\frac{11}{200}x -\frac{11}{1000}}{(x-1)(x^2+4)}dx = \frac{11}{200}\int\frac{x-\frac{1}{5}}{(x-1)(x^2+4)}dx =$$
+	$$= \frac{11}{200}\int\frac{(x - 1) + \frac{4}{5}}{(x-1)(x^2+4)}dx = \frac{11}{200}(\int\frac{dx}{x^2+2^2} + \frac{4}{5}\int\frac{dx}{(x-1)(x^2+4)})$$
+
+	$$\int\frac{dx}{x^2+2^2} = \frac{1}{2}\arctg{\frac{x}{2}} + C$$
+
+	$$\int\frac{dx}{(x - 1)(x^2 + 4)} = \int\frac{A}{x - 1}dx + \int\frac{Bx + C}{x^2 + 4}dx$$
+	$$\frac{A}{x - 1} + \frac{Bx + D}{x^2 + 4} = \frac{(x^2+4)A + (x-1)(Bx+C)}{(x-1)(x^2+4)}$$
+	$$x^2: A + B = 0$$
+	$$x: -B + C = 0$$
+	$$1: 4A - C = 1$$
+	\begin{equation*}
+		\begin{cases}
+			A + B = 0 \Rightarrow A = -B\\
+			-B + C = 0 \Rightarrow B = C\\
+			4A - C = 1 \Rightarrow -4B - C = 1 \Rightarrow -5B = 1
+		\end{cases}
+	\end{equation*}
+	\begin{equation*}
+		\begin{cases}
+			B = C = -\frac{1}{5}\\
+			A = \frac{1}{5}
+		\end{cases}
+	\end{equation*}
+
+	$$\int(\frac{A}{x - 1} + \frac{Bx + C}{x^2 + 4})dx = \frac{1}{5}\int\frac{dx}{x - 1} - \frac{1}{5}\int\frac{x + 1}{x^2 + 4}dx$$
+	$$\int\frac{x + 1}{x^2 + 4}dx = \int\frac{x}{x^2+4} + \int\frac{1}{x^2 + 4} = \frac{1}{2}\ln(x^2 + 4) + \frac{1}{2}\arctg{\frac{x}{2}} + C$$
+	$$\int\frac{x}{x^2 + 4}dx = \frac{1}{2}\int\frac{dt}{t} = \frac{1}{2}\ln|t| + C = \frac{1}{2}\ln(x^2 + 4) + C$$
+	$$\frac{1}{5}\int\frac{dx}{x - 1} - \frac{1}{5}\int\frac{x + 1}{x^2 + 4}dx = \frac{1}{5}\ln|x - 1| + \frac{1}{2}\ln(x^2 + 4) + \frac{1}{2}\arctg{\frac{x}{2}} + C$$
+
+	\emph{Ответ.} $$\int\frac{dx}{(x-1)^2(x^2+4)^2} = \frac{\frac{11}{40}x^2 - \frac{1}{8}x - \frac{3}{5}}{25(x-1)(x^2+4)} + \frac{11}{200}(\frac{1}{2}\arctg{\frac{x}{2}} + \frac{4}{5}(\frac{1}{5}\ln|x - 1| + \frac{1}{2}\ln(x^2 + 4) + \frac{1}{2}\arctg{\frac{x}{2}})) + C$$
+	% End of problem 2
+	\begin{displaymath}
 	3. \int \sqrt{(x^2+1)^3} dx
-	\end{align}
-	\begin{align}
+	\end{displaymath}
+	\begin{displaymath}
 	4. \int \frac{dx}{(1+x)\sqrt{x-x^2}}
-	\end{align}
+	\end{displaymath}
 \end{document}
